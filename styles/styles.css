@@ -16,3 +16,15 @@
 .full-color {
     opacity: 1;
 }
+
+.simon-turn {
+    background-color: turquoise;
+}
+
+.user-turn {
+    background-color: green;
+}
+
+.lost {
+    background-color: red;
+}
