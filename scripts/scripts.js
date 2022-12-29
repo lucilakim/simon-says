@@ -8,9 +8,9 @@ const $infoBox = document.querySelector("#info-box");
 const $infoText = document.querySelector("#info-text");
 
 const colorsBox = [$greenBox, $redBox, $yellowBox, $bluenBox];
-let round = 3;
 const simonSequence = [];
 const userSequence = [];
+let round = simonSequence.length + 1;
 
 $playButton.addEventListener("click", (e) => {
     e.preventDefault();
@@ -46,6 +46,7 @@ function simonTurnOnBoxes(round) {
 
         setTimeout(() => {
             const colorsBox = selectColor();
+            simonSequence.push(colorsBox);
             turnOnColor(colorsBox);
             turnOffColor(colorsBox);
         }, DELAY_IN_MILLISECONDS);
@@ -73,7 +74,6 @@ function enablePlayButton(timeToEnable){
 function increaseRound(timeToIncrease) {
     setTimeout(() => {
         round++
-        console.log(round)
     },timeToIncrease);
 }
 
