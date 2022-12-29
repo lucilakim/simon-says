@@ -8,7 +8,7 @@ const $infoBox = document.querySelector("#info-box");
 const $infoText = document.querySelector("#info-text");
 
 const colorsBox = [$greenBox, $redBox, $yellowBox, $bluenBox];
-let round = 5;
+let round = 3;
 const simonSequence = [];
 const userSequence = [];
 
@@ -23,10 +23,23 @@ $stopButton.addEventListener("click", () => {
 })
 
 function simonPlays(round) {
-    $infoBox.classList.remove("bg-info");
-    $infoBox.classList.add("bg-primary");
+    const TIME_IN_MILISECOND = 1000;
+    const SIMON_PLAY_TIME = round * TIME_IN_MILISECOND;
+
+    changeInfoBoxColor("bg-info", "bg-primary");
     $infoText.innerText = "Simon Turn";
 
+    simonTurnOnBoxes(round);
+    enablePlayButton(SIMON_PLAY_TIME);
+    increaseRound(SIMON_PLAY_TIME);
+}
+
+function changeInfoBoxColor(previousColor, newColor){
+    $infoBox.classList.remove(previousColor);
+    $infoBox.classList.add(newColor);
+}
+
+function simonTurnOnBoxes(round) {
     for (let i = 0; i < round; i++) {
         const TIME_IN_MILISECOND = 1000;
         const DELAY_IN_MILLISECONDS = i * TIME_IN_MILISECOND;
@@ -36,12 +49,6 @@ function simonPlays(round) {
             turnOnColor(colorsBox);
             turnOffColor(colorsBox);
         }, DELAY_IN_MILLISECONDS);
-
-        const SIMON_PLAY_TIME = round * TIME_IN_MILISECOND;
-
-        setTimeout(() => {
-            $playButton.disabled = false;
-        }, SIMON_PLAY_TIME);
     }
 }
 
@@ -50,10 +57,24 @@ function turnOnColor(colorsBox) {
         fillColor(colorsBox);
     }, 500)
 }
+
 function turnOffColor(colorsBox) {
     setTimeout(() => {
         resetColor(colorsBox);
     }, 1000)
+}
+
+function enablePlayButton(timeToEnable){
+    setTimeout(() => {
+        $playButton.disabled = false;
+    }, timeToEnable);
+}
+
+function increaseRound(timeToIncrease) {
+    setTimeout(() => {
+        round++
+        console.log(round)
+    },timeToIncrease);
 }
 
 function selectColor() {
