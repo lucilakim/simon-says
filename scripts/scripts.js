@@ -1,3 +1,4 @@
+const $boxContainer = document.querySelector("#box-container");
 const $greenBox = document.querySelector("#green-box");
 const $redBox = document.querySelector("#red-box");
 const $yellowBox = document.querySelector("#yellow-box");
@@ -18,9 +19,21 @@ $playButton.addEventListener("click", (e) => {
     simonPlays(round);
 })
 
+$boxContainer.addEventListener("click", (e) => {
+    e.stopPropagation();
+    setTimeout(()=> {
+        userPlays(e)
+    })
+});
+
 $stopButton.addEventListener("click", () => {
     location.reload();
 })
+
+function userPlays(e) {
+    const userTarget = e.target;
+    console.log(userTarget)
+}
 
 function simonPlays(round) {
     const TIME_IN_MILISECOND = 1000;
