@@ -19,21 +19,20 @@ $playButton.addEventListener("click", (e) => {
     simonPlays(round);
 })
 
-$boxContainer.addEventListener("click", (e) => {
-    e.stopPropagation();
-    setTimeout(()=> {
-        userPlays(e)
-    })
-});
-
 $stopButton.addEventListener("click", () => {
     location.reload();
 })
 
-function userPlays(e) {
+$boxContainer.addEventListener("click", (e) => {
+    e.stopPropagation();
     const userTarget = e.target;
-    console.log(userTarget)
-}
+    userSequence.push(userTarget);
+    for (let i = 0; i < simonSequence.length; i++) {
+        if (userSequence[i] !== simonSequence[i]) {
+            return;
+        }
+    }
+});
 
 function simonPlays(round) {
     const TIME_IN_MILISECOND = 1000;
@@ -47,7 +46,7 @@ function simonPlays(round) {
     increaseRound(SIMON_PLAY_TIME);
 }
 
-function changeInfoBoxColor(previousColor, newColor){
+function changeInfoBoxColor(previousColor, newColor) {
     $infoBox.classList.remove(previousColor);
     $infoBox.classList.add(newColor);
 }
@@ -78,7 +77,7 @@ function turnOffColor(colorsBox) {
     }, 1000)
 }
 
-function enablePlayButton(timeToEnable){
+function enablePlayButton(timeToEnable) {
     setTimeout(() => {
         $playButton.disabled = false;
     }, timeToEnable);
@@ -87,7 +86,7 @@ function enablePlayButton(timeToEnable){
 function increaseRound(timeToIncrease) {
     setTimeout(() => {
         round++
-    },timeToIncrease);
+    }, timeToIncrease);
 }
 
 function selectColor() {
