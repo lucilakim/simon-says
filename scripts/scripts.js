@@ -9,8 +9,8 @@ const $infoBox = document.querySelector("#info-box");
 const $infoText = document.querySelector("#info-text");
 
 const colorsBox = [$greenBox, $redBox, $yellowBox, $bluenBox];
-const simonSequence = [];
-const userSequence = [];
+let simonSequence = [];
+let userSequence = [];
 let round = simonSequence.length + 1;
 
 $playButton.addEventListener("click", (e) => {
@@ -29,16 +29,27 @@ $boxContainer.addEventListener("click", (e) => {
     userSequence.push(userTarget);
     for (let i = 0; i < simonSequence.length; i++) {
         if (userSequence[i] !== simonSequence[i]) {
+            loseGame();
+            $infoText.innerText = "You Lose, Try Again";
             return;
         }
     }
 });
 
+function loseGame() {
+    changeInfoBoxColor("bg-primary", "bg-danger");
+    enablePlayButton();
+    simonSequence = [];
+    userSequence = [];
+    round = simonSequence.length + 1;
+}
+
 function simonPlays(round) {
     const TIME_IN_MILISECOND = 1000;
     const SIMON_PLAY_TIME = round * TIME_IN_MILISECOND;
 
-    changeInfoBoxColor("bg-info", "bg-primary");
+    const $infoBoxColor = $infoBox.classList.contains("bg-info") ? "bg-info" : "bg-danger";
+    changeInfoBoxColor($infoBoxColor, "bg-primary");
     $infoText.innerText = "Simon Turn";
 
     simonTurnOnBoxes(round);
