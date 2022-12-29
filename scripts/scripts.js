@@ -16,28 +16,43 @@ let round = simonSequence.length + 1;
 $playButton.addEventListener("click", (e) => {
     e.preventDefault();
     $playButton.disabled = true;
-    simonPlays(round);
+        simonPlays(round);
+        userPlays(round)
 })
 
 $stopButton.addEventListener("click", () => {
     location.reload();
 })
 
-$boxContainer.addEventListener("click", (e) => {
-    e.stopPropagation();
-    const userTarget = e.target;
-    userSequence.push(userTarget);
-    for (let i = 0; i < simonSequence.length; i++) {
-        if (userSequence[i] !== simonSequence[i]) {
-            loseGame();
-            $infoText.innerText = "You Lose, Try Again";
-            return;
-        }
-    }
-});
+
+function userPlays(round) {
+    const TIME_IN_MILISECOND = round + 1300;
+    setTimeout(() => {
+        changeInfoBoxColor("bg-primary", "bg-success");
+        $infoText.innerText = "Your Turn";
+
+        $boxContainer.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const userTarget = e.target;
+
+            userSequence.push(userTarget);
+            for (let i = 0; i < simonSequence.length; i++) {
+                if (userSequence[i] !== simonSequence[i]) {
+                    loseGame();
+                    $infoText.innerText = "You Lose, Try Again";
+                    return;
+                } else {
+                    console.log("Well done")
+                    userSequence = [];
+                    round++
+                }
+            }
+        });
+    }, TIME_IN_MILISECOND);
+}
 
 function loseGame() {
-    changeInfoBoxColor("bg-primary", "bg-danger");
+    changeInfoBoxColor("bg-success", "bg-danger");
     enablePlayButton();
     simonSequence = [];
     userSequence = [];
@@ -48,13 +63,22 @@ function simonPlays(round) {
     const TIME_IN_MILISECOND = 1000;
     const SIMON_PLAY_TIME = round * TIME_IN_MILISECOND;
 
-    const $infoBoxColor = $infoBox.classList.contains("bg-info") ? "bg-info" : "bg-danger";
+    const $infoBoxColor = getColorInfoBox($infoBox);
     changeInfoBoxColor($infoBoxColor, "bg-primary");
     $infoText.innerText = "Simon Turn";
 
     simonTurnOnBoxes(round);
     enablePlayButton(SIMON_PLAY_TIME);
-    increaseRound(SIMON_PLAY_TIME);
+}
+
+function getColorInfoBox(box){
+    if(box.classList.contains("bg-info")){
+        return "bg-info";
+    } else if(box.classList.contains("bg-success")) {
+        return "bg-success";
+    } else if(box.classList.contains("bg-danger")){
+        return "bg-danger";
+    }
 }
 
 function changeInfoBoxColor(previousColor, newColor) {
@@ -77,27 +101,23 @@ function simonTurnOnBoxes(round) {
 }
 
 function turnOnColor(colorsBox) {
+    const TIME_IN_MILISECOND = 500;
     setTimeout(() => {
         fillColor(colorsBox);
-    }, 500)
+    }, TIME_IN_MILISECOND)
 }
 
 function turnOffColor(colorsBox) {
+    const TIME_IN_MILISECOND = 100;
     setTimeout(() => {
         resetColor(colorsBox);
-    }, 1000)
+    }, TIME_IN_MILISECOND)
 }
 
 function enablePlayButton(timeToEnable) {
     setTimeout(() => {
         $playButton.disabled = false;
     }, timeToEnable);
-}
-
-function increaseRound(timeToIncrease) {
-    setTimeout(() => {
-        round++
-    }, timeToIncrease);
 }
 
 function selectColor() {
