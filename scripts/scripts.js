@@ -108,7 +108,7 @@ function turnOnColor(colorsBox) {
 }
 
 function turnOffColor(colorsBox) {
-    const TIME_IN_MILISECOND = 100;
+    const TIME_IN_MILISECOND = 1000;
     setTimeout(() => {
         resetColor(colorsBox);
     }, TIME_IN_MILISECOND)
