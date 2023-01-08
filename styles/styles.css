@@ -1,30 +1,32 @@
-.row {
-    width: 750px;
+@font-face {
+    font-family: TTNormsProNormal;
+    src: url("./font-ttfnormspro/TT\ Norms\ Pro\ Regular.otf") format("OpenType");
 }
 
-.info-box {
-    width: 500px;
-    margin-top: 30px;
+@font-face {
+    font-family: TTNormsProBold;
+    src: url("./font-ttfnormspro/TT\ Norms\ Pro\ Bold.otf") format("OpenType");
 }
 
-.color-box, .info-box {
-    height: 150px;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.game-instructions {
+    font-family: TTNormsProNormal;
+    font-size: 18px;
+}
+
+.featured-game-instructions {
+    font-family: TTNormsProBold;
+}
+
+.hidden {
+    display: none;
+}
+
+.medium-opacity {
     opacity: 0.5;
-    color: white;
-}
-
-.full-color {
-    opacity: 1;
-}
-
-.simon-turn {
-    background-color: turquoise;
-}
-
-.user-turn {
-    background-color: green;
-}
-
-.lost {
-    background-color: red;
 }
