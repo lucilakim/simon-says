@@ -9,34 +9,53 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/color-box-styles.css">
 </head>
 
 <body>
-    <div class="container px-4 d-flex  mt-5">
-        <div class="row g-3">
-            <div class="col">
+    <div class="container mt-4">
+        <div class="row mx-auto mb-2">
+            <div class="col-sm text-center">
                 <h1>Simon Says</h1>
-                <button class="btn btn-primary btn-lg" id="play-button">Play</button>
-                <button type="submit" class="btn btn-secondary btn-lg" id="stop-button">Stop</button>
+            </div>
+        </div>
 
-                <div class="bg-info info-box text-center" id="info-box">
-                    <p class="fs-5 mt-3 pt-5" id="info-text">Start to play</p>
+        <div class="row mb-3">
+            <div class="col-sm-10 mx-auto">
+                <p class="game-instructions"><span class="featured-game-instructions">Get ready to watch, remember,
+                        repeat!</span> The Simon game is the exciting game of lights and sounds in which players must
+                    repeat random sequences of lights by pressing the colored pads in the correct order. It's fast-paced
+                    play, with lights and sounds that can challenge you. Experience the fun as you repeat the patterns
+                    and advance to higher levels. Keep track of your score as you challenge friends or try to beat your
+                    own high score. </p>
+            </div>
+        </div>
+
+        <div class="row mx-auto bg-dark color-box-container" id="color-box-container">
+            <div class="col-sm-6 color-box bg-success color-box green-box" id="green-box">
+                <p>Green</p>
+            </div>
+            <div class="col-sm-6 color-box bg-danger color-box red-box" id="red-box">
+                <p>Red</p>
+            </div>
+            <div class="col-sm-6 color-box bg-warning color-box yellow-box" id="yellow-box">
+                <p>Yellow</p>
+            </div>
+            <div class="col-sm-6 color-box bg-primary color-box blue-box" id="blue-box">
+                <p>Blue</p>
+            </div>
+            <div class="row mx-auto bg-dark mb-5 center-box-container">
+                <div class="col-sm text-center">
+                    <button class="btn btn-dark btn-lg" id="start-button">Start</button>
                 </div>
             </div>
         </div>
 
-        <div class="row g-3 bg-dark p-3" id="box-container">
-            <div class="col-6">
-                <div class="p-3 bg-success color-box text-center" id="green-box">Green</div>
-            </div>
-            <div class="col-6">
-                <div class="p-3 bg-danger color-box text-center" id="red-box">Red</div>
-            </div>
-            <div class="col-6">
-                <div class="p-3 bg-warning color-box text-center" id="yellow-box">Yellow</div>
-            </div>
-            <div class="col-6">
-                <div class="p-3 bg-primary color-box text-center" id="blue-box">Blue</div>
+        <div class="row mx-auto">
+            <div class="col-sm text-center">
+                <div class="info-box mx-auto mt-4" id="info-box">
+                    <p class="fs-5" id="info-text"></p>
+                </div>
             </div>
         </div>
     </div>
