@@ -37,11 +37,18 @@
 }
 
 .center-box-container {
-    height: 200px;
-    width: 200px;
+    height: 180px;
+    width: 180px;
     border-radius: 50%;
     align-items: center;
+}
+
+.center-box-container, .play-button {
     position: absolute;
     top: 30%;
-    left: auto;
+    left: 30%;
+}
+
+.round-number {
+    color: white;
 }

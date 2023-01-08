@@ -14,12 +14,12 @@
     padding: 0;
 }
 
-.game-instructions {
+.game-information {
     font-family: TTNormsProNormal;
     font-size: 18px;
 }
 
-.featured-game-instructions {
+.featured-game-information {
     font-family: TTNormsProBold;
 }
 
@@ -29,4 +29,8 @@
 
 .medium-opacity {
     opacity: 0.5;
+}
+
+.full-color {
+    opacity: 1;
 }
