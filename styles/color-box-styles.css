@@ -1,0 +1,54 @@
+.box-container, .color-box, .center-box-container {
+    display: flex;
+}
+
+.color-box-container {
+    height: 500px;
+    width: 500px;  
+    border-radius: 50%;
+    padding: 3px;
+    position: relative;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+}
+
+.color-box {
+    height: 45%;
+    width: 45%;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+.green-box {
+    border-top-left-radius: 800%;
+}
+
+.red-box {
+    border-top-right-radius: 800%;
+}
+
+.yellow-box {
+    border-bottom-left-radius: 800%;
+}
+
+.blue-box {
+    border-bottom-right-radius: 800%;
+}
+
+.center-box-container {
+    height: 180px;
+    width: 180px;
+    border-radius: 50%;
+    align-items: center;
+}
+
+.center-box-container, .play-button {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+}
+
+.round-number {
+    color: white;
+}

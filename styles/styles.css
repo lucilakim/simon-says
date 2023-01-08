@@ -1,0 +1,36 @@
+@font-face {
+    font-family: TTNormsProNormal;
+    src: url("./font-ttfnormspro/TT\ Norms\ Pro\ Regular.otf") format("OpenType");
+}
+
+@font-face {
+    font-family: TTNormsProBold;
+    src: url("./font-ttfnormspro/TT\ Norms\ Pro\ Bold.otf") format("OpenType");
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.game-information {
+    font-family: TTNormsProNormal;
+    font-size: 18px;
+}
+
+.featured-game-information {
+    font-family: TTNormsProBold;
+}
+
+.hidden {
+    display: none;
+}
+
+.medium-opacity {
+    opacity: 0.5;
+}
+
+.full-color {
+    opacity: 1;
+}
